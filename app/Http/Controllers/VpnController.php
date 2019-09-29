@@ -59,6 +59,7 @@ class VpnController extends Controller
                 $vpn->server = "*";
                 $vpn->save();
             }
+            $vpns = VpnUser::all();
             $this->saveconf($vpns);
             return redirect()->action('VpnController@index');
         }
