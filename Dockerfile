@@ -9,6 +9,11 @@ RUN git clone https://github.com/cancelledbit/vpnadmin.git
 RUN chown -R www-data /www && touch /www/vpnadmin/chap-secrets.conf && chmod 777 /www/vpnadmin/chap-secrets.conf
 RUN cd /www/vpnadmin && composer install && npm install && npm run dev
 COPY ./nginx.tpl /etc/nginx/sites-available/default
-COPY env.tpl /www/vpnadmin/.env
-RUN service nginx start && service php7.2-fpm start
-CMD tail -f /var/log/ppp.log
+COPY env.tpl /www/vpnadmin/env.tpl
+RUN touch vpnadmin.sqlite && chown www-data vpnadmin.sqlite
+WORKDIR /www/vpnadmin
+RUN php artisan migrate:fresh
+COPY ./entrypoint.sh /www/
+RUN chmod 777 /www/entrypoint.sh
+WORKDIR /
+ENTRYPOINT ["bash","/www/entrypoint.sh"]
