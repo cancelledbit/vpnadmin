@@ -10,9 +10,10 @@ RUN chown -R www-data /www && touch /www/vpnadmin/chap-secrets.conf && chmod 777
 RUN cd /www/vpnadmin && composer install && npm install && npm run dev
 COPY ./nginx.tpl /etc/nginx/sites-available/default
 COPY env.tpl /www/vpnadmin/env.tpl
+#temporary env file to make migrations
+COPY env.tpl /www/vpnadmin/.env
 RUN touch vpnadmin.sqlite && chown www-data vpnadmin.sqlite
 WORKDIR /www/vpnadmin
-RUN php artisan migrate:fresh
 COPY ./entrypoint.sh /www/
 RUN chmod 777 /www/entrypoint.sh
 WORKDIR /
