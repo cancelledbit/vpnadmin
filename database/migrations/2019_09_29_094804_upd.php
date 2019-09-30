@@ -14,7 +14,7 @@ class Upd extends Migration
     public function up()
     {
         Schema::table('vpn_users', function (Blueprint $table) {
-            $table->string("username");
+            $table->string("username")->default('');
             $table->string("server")->default("*");
             $table->string("password");
             $table->string('ip');
