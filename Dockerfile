@@ -14,6 +14,7 @@ COPY env.tpl /www/vpnadmin/env.tpl
 COPY env.tpl /www/vpnadmin/.env
 RUN touch vpnadmin.sqlite && chown www-data vpnadmin.sqlite
 WORKDIR /www/vpnadmin
+RUN php artisan migrate:fresh
 COPY ./entrypoint.sh /www/
 RUN chmod 777 /www/entrypoint.sh
 WORKDIR /
