@@ -1,0 +1,14 @@
+ipcp-accept-local
+ipcp-accept-remote
+ms-dns  8.8.8.8
+auth
+idle 1800
+mtu 1410
+mru 1410
+nodefaultroute
+debug
+proxyarp
+connect-delay 5000
+persist
+name l2tp
+require-mschap-v2

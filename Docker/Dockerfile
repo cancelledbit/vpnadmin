@@ -6,16 +6,27 @@ php-mysql php-mbstring npm nginx sudo git ca-certificates pptpd xl2tpd strongswa
 RUN mkdir /www && chown -R www-data /www && cd /www
 WORKDIR /www
 RUN git clone https://github.com/cancelledbit/vpnadmin.git
-RUN chown -R www-data /www && touch /www/vpnadmin/chap-secrets.conf && chmod 777 /www/vpnadmin/chap-secrets.conf
+RUN chown -R www-data /www && touch /www/vpnadmin/chap_secrets.conf && chmod 777 /www/vpnadmin/chap_secrets.conf \
+    && rm /etc/ppp/chap-secrets \
+    && ln -s /www/vpnadmin/chap_secrets.conf /etc/ppp/chap-secrets
 RUN cd /www/vpnadmin && composer install && npm install && npm run dev
-COPY ./nginx.tpl /etc/nginx/sites-available/default
+COPY nginx.tpl /etc/nginx/sites-available/default
 COPY env.tpl /www/vpnadmin/env.tpl
 #temporary env file to make migrations
 COPY env.tpl /www/vpnadmin/.env
+COPY pptpd.conf /etc/
+COPY xl2tpd.conf /etc/xl2tpd/
+COPY options.pptpd /etc/ppp/
+COPY options.xl2tpd /etc/ppp/
+COPY ipsec.conf /etc/
 RUN touch vpnadmin.sqlite && chown www-data vpnadmin.sqlite
 WORKDIR /www/vpnadmin
 RUN php artisan migrate:fresh
-COPY ./entrypoint.sh /www/
+COPY entrypoint.sh /www/
 RUN chmod 777 /www/entrypoint.sh
+
 WORKDIR /
+EXPOSE 1701
+EXPOSE 1723
+EXPOSE 80
 ENTRYPOINT ["bash","/www/entrypoint.sh"]
