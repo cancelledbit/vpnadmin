@@ -5,7 +5,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends --no-upgrade ph
 php-mysql php-mbstring nginx sudo git ca-certificates pptpd curl xl2tpd strongswan composer sqlite3 php-sqlite3 unzip php-zip
 RUN mkdir /www && chown -R www-data /www && cd /www
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-RUN apt install nodejs
+RUN apt install -y nodejs
 WORKDIR /www
 RUN git clone https://github.com/cancelledbit/vpnadmin.git
 RUN chown -R www-data /www && touch /www/vpnadmin/chap_secrets.conf && chmod 777 /www/vpnadmin/chap_secrets.conf \
