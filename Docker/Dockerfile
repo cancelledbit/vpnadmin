@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get -y install --no-install-recommends --no-upgrade php php-fpm php-xml \
-php-mysql php-mbstring nginx sudo git ca-certificates pptpd curl xl2tpd strongswan composer sqlite3 php-sqlite3 unzip php-zip
+php-mysql php-mbstring nginx sudo git ca-certificates pptpd curl xl2tpd libreswan composer sqlite3 php-sqlite3 unzip php-zip
 RUN mkdir /www && chown -R www-data /www && cd /www
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN apt install -y nodejs
