@@ -46,7 +46,7 @@ class VpnController extends Controller
                 $existent_users = $vpns->where('username','=',$r->login);
                 $existent_ips = $vpns->where('ip','=',$r->ip);
                 if($existent_users->count()){
-                    $c = $existent_users->first()->get();
+                    $c = $existent_users->first();
                     return "Cant create vpn user, login already exists in $c";
 
                 }
