@@ -43,12 +43,16 @@ class VpnController extends Controller
                 $vpn->save();
             }
             else {
-                if($vpns->where('username','=',$r->login)->count()){
-                    return "Cant create vpn user, login already exists";
+                $existent_users = $vpns->where('username','=',$r->login);
+                $existent_ips = $vpns->where('ip','=',$r->ip);
+                if($existent_users->count()){
+                    $c = $existent_users->first()->get()->username;
+                    return "Cant create vpn user, login already exists in $c";
 
                 }
-                if($vpns->where('ip','=',$r->ip)->count()){
-                    return "Cant create vpn user, ip already exists";
+                if($existent_ips->count()){
+                    $c = $existent_users->first()->get()->username;
+                    return "Cant create vpn user, ip already exists $c";
                 }
                 $vpn = new VpnUser();
                 $vpn->username = $r->login;
