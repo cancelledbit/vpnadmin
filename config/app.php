@@ -123,6 +123,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'freename' => env('FREE_VPN_NAME','free'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

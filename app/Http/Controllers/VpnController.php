@@ -6,6 +6,7 @@ use App\Http\Middleware\CheckRole;
 use App\VpnUser;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class VpnController extends Controller
 {
@@ -23,9 +24,10 @@ class VpnController extends Controller
 
     }
     public function edit(Request $r, $id = ""){
+        $freename = config('app.freename');
         if ($r->method() == 'POST'){
             if(!$r->fname){
-                $fname = 'Свободно';
+                $fname = $freename;
             }
             else {
                 $fname = $r->fname;
@@ -82,7 +84,7 @@ class VpnController extends Controller
             return view('editvpn');
         }
         $vpn = VpnUser::find($id);
-        return view('editvpn',['vpn'=>$vpn]);
+        return view('editvpn',['vpn'=>$vpn,'freename'=>$freename]);
 
     }
     private function saveconf(Collection $vpns){

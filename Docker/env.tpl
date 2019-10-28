@@ -12,7 +12,7 @@ DB_PORT=3306
 DB_DATABASE=/www/vpnadmin.sqlite
 DB_USERNAME=root
 DB_PASSWORD=superpassword
-
+FREE_VPN_NAME=free
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
 QUEUE_CONNECTION=sync

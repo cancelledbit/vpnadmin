@@ -20,7 +20,7 @@
                     </thead>
                     <tbody>
                     @foreach($vpn as $entry)
-                        @if ($entry->fullname=='Свободно')
+                        @if ($entry->fullname==$freename)
                            <tr class="table-success">
                         @else
                             <tr class="table-danger">
