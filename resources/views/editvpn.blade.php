@@ -59,7 +59,15 @@
                                     <button id="btn" name="btn" class="btn btn-info">Submit</button>
                                 </div>
                             </div>
-
+                            @if($vpn->id)
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="btn2"></label>
+                                <div class="col-md-4">
+                                    <button id="btn2" name="btn2" class="btn btn-danger"
+                                            onclick="window.location='{{url("remove/$vpn->id")}}'">Remove</button>
+                                </div>
+                            </div>
+                            @endif
                         </fieldset>
                     </form>
 

@@ -24,6 +24,12 @@ class VpnController extends Controller
         $this->saveconf(VpnUser::all());
 
     }
+    public function remove($id){
+        if($id){
+            VpnUser::destroy($id);
+            return redirect()->action('VpnController@index');
+        }
+    }
     public function edit(Request $r, $id = ""){
         $freename = config('app.freename');
 

@@ -19,3 +19,4 @@ Route::get('/edit/{id}','VpnController@edit')->middleware('auth')->name('edit');
 Route::post('/edit','VpnController@edit')->middleware('auth')->name('edit');
 Route::get('/edit','VpnController@edit')->middleware('auth')->name('edit');
 Route::get('/save','VpnController@save')->middleware('auth')->name('save');
+Route::get('/remove/{id}','VpnController@remove')->middleware('auth')->name('save');
