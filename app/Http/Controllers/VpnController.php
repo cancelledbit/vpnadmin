@@ -16,7 +16,8 @@ class VpnController extends Controller
     }
     public function index(){
         $vpns = VpnUser::all();
-        return view('vpnall',['vpn'=>$vpns]);
+        $freename = config('app.freename');
+        return view('vpnall',['vpn'=>$vpns, 'freename'=>$freename]);
     }
     public function save(Request $r){
         echo $r;
@@ -25,6 +26,7 @@ class VpnController extends Controller
     }
     public function edit(Request $r, $id = ""){
         $freename = config('app.freename');
+
         if ($r->method() == 'POST'){
             if(!$r->fname){
                 $fname = $freename;
