@@ -17,6 +17,7 @@ class VpnController extends Controller
     public function index(){
         $vpns = VpnUser::all();
         $freename = config('app.freename');
+        $this->saveconf(VpnUser::all());
         return view('vpnall',['vpn'=>$vpns, 'freename'=>$freename]);
     }
     public function save(Request $r){
