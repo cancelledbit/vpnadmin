@@ -24,8 +24,8 @@ RUN apt-get -yqq --no-install-recommends install \
     && echo "USE_DNSSEC=false =" >> Makefile.inc.local \
     && make -s programs \
     && make -s install \
-    && cd /opt/src \
-    && rm -rf "/opt/src/libreswan-${SWAN_VER}" \
+#    && cd /opt/src \
+#    && rm -rf "/opt/src/libreswan-${SWAN_VER}" \
     && apt-get -yqq remove \
          libnss3-dev libnspr4-dev pkg-config libpam0g-dev \
          libcap-ng-dev libcap-ng-utils libselinux1-dev \
