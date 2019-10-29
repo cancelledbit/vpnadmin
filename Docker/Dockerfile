@@ -31,7 +31,6 @@ RUN apt-get -yqq --no-install-recommends install \
          libcap-ng-dev libcap-ng-utils libselinux1-dev \
          libcurl4-nss-dev libsystemd-dev flex bison gcc make \
          libunbound-dev xmlto perl-modules perl \
-    && apt-get -yqq autoremove \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/ipsec.secrets /etc/ppp/chap-secrets
