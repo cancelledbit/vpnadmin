@@ -5,21 +5,10 @@ ENV SWAN_VER 3.27
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get -y install --no-install-recommends --no-upgrade php php-fpm php-xml \
 php-mysql php-mbstring nginx sudo git ca-certificates pptpd curl xl2tpd composer sqlite3 php-sqlite3 unzip php-zip
-RUN mkdir /www && chown -R www-data /www && cd /www
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-RUN apt install -y nodejs
-WORKDIR /www
-RUN git clone https://github.com/cancelledbit/vpnadmin.git
-RUN chown -R www-data /www && touch /www/vpnadmin/chap_secrets.conf && chmod 777 /www/vpnadmin/chap_secrets.conf
-RUN cd /www/vpnadmin && composer install && npm install && npm run dev
-COPY nginx.tpl /etc/nginx/sites-available/default
-COPY env.tpl /www/vpnadmin/env.tpl
-#temporary env file to make migrations
-COPY env.tpl /www/vpnadmin/.env
 #libreswan
 RUN apt-get -yqq --no-install-recommends install \
          wget dnsutils openssl ca-certificates kmod \
-         iproute gawk grep sed net-tools iptables \
+         gawk grep sed net-tools iptables \
          bsdmainutils libunbound2 libcurl3-nss \
          libnss3-tools libevent-dev libcap-ng0 xl2tpd \
          libnss3-dev libnspr4-dev pkg-config libpam0g-dev libldns-dev \
@@ -46,7 +35,19 @@ RUN apt-get -yqq --no-install-recommends install \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/ipsec.secrets /etc/ppp/chap-secrets \
-    && ln -s /www/vpnadmin/chap_secrets.conf /etc/ppp/chap-secrets
+
+RUN mkdir /www && chown -R www-data /www && cd /www
+RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+RUN apt install -y nodejs
+WORKDIR /www
+RUN git clone https://github.com/cancelledbit/vpnadmin.git
+RUN chown -R www-data /www && touch /www/vpnadmin/chap_secrets.conf && chmod 777 /www/vpnadmin/chap_secrets.conf \
+       && ln -s /www/vpnadmin/chap_secrets.conf /etc/ppp/chap-secrets
+RUN cd /www/vpnadmin && composer install && npm install && npm run dev
+COPY nginx.tpl /etc/nginx/sites-available/default
+COPY env.tpl /www/vpnadmin/env.tpl
+#temporary env file to make migrations
+COPY env.tpl /www/vpnadmin/.env
 
 COPY pptpd.conf /etc/
 COPY xl2tpd.conf /etc/xl2tpd/
