@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="755813c3-485a-486c-9867-8125a2da83d3" name="Default Changelist" comment="" />
+    <list default="true" id="755813c3-485a-486c-9867-8125a2da83d3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Docker/entrypoint.sh" afterDir="false" />
+    </list>
     <ignored path="chap_secrets.conf" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Docker/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
+            <state relative-caret-position="90">
+              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -100,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Docker/entrypoint.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+            <state relative-caret-position="594">
+              <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -141,7 +145,6 @@
         <option value="$PROJECT_DIR$/xl2tpd.conf" />
         <option value="$PROJECT_DIR$/entrypoint.sh" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/Docker/entrypoint.sh" />
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" />
@@ -154,6 +157,7 @@
         <option value="$PROJECT_DIR$/resources/views/editvpn.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VpnController.php" />
         <option value="$PROJECT_DIR$/Docker/ipsec.conf" />
+        <option value="$PROJECT_DIR$/Docker/entrypoint.sh" />
         <option value="$PROJECT_DIR$/Docker/Dockerfile" />
       </list>
     </option>
@@ -362,7 +366,7 @@
       <workItem from="1569843520568" duration="5347000" />
       <workItem from="1569854790693" duration="19143000" />
       <workItem from="1572005524177" duration="6794000" />
-      <workItem from="1572343299621" duration="2223000" />
+      <workItem from="1572343299621" duration="3377000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1569768915444</created>
@@ -574,11 +578,32 @@
       <option name="project" value="LOCAL" />
       <updated>1572346352857</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="dockerfile preparation">
+      <created>1572346557396</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1572346557396</updated>
+    </task>
+    <task id="LOCAL-00032" summary="test docker">
+      <created>1572346670468</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1572346670468</updated>
+    </task>
+    <task id="LOCAL-00033" summary="test docker">
+      <created>1572346870165</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1572346870165</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51993000" />
+    <option name="totallyTimeSpent" value="53147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -639,7 +664,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="init" />
     <MESSAGE value="dockerfile preparation" />
-    <option name="LAST_COMMIT_MESSAGE" value="dockerfile preparation" />
+    <MESSAGE value="test docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="test docker" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
@@ -926,15 +952,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Docker/entrypoint.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        <state relative-caret-position="594">
+          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Docker/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
+        <state relative-caret-position="90">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
         </state>
       </provider>
     </entry>
