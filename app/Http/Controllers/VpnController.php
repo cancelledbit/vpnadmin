@@ -92,9 +92,7 @@ class VpnController extends Controller
         if(!$id){
             return view('editvpn');
         }
-        if(!$vpn = VpnUser::find($id)){
-            $vpn->id = null;
-        }
+
 
         return view('editvpn',['vpn'=>$vpn,'freename'=>$freename]);
 
