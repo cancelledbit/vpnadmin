@@ -10,7 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN apt install -y nodejs
 WORKDIR /www
 RUN git clone https://github.com/cancelledbit/vpnadmin.git
-RUN chown -R www-data /www && touch /www/vpnadmin/chap_secrets.conf && chmod 777 /www/vpnadmin/chap_secrets.conf \
+RUN chown -R www-data /www && touch /www/vpnadmin/chap_secrets.conf && chmod 777 /www/vpnadmin/chap_secrets.conf
 RUN cd /www/vpnadmin && composer install && npm install && npm run dev
 COPY nginx.tpl /etc/nginx/sites-available/default
 COPY env.tpl /www/vpnadmin/env.tpl
