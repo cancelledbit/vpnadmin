@@ -54,7 +54,7 @@ RUN apt-get -yqq remove \
              libcap-ng-dev libcap-ng-utils libselinux1-dev \
              libcurl4-nss-dev libsystemd-dev flex bison gcc make \
              libunbound-dev xmlto perl-modules perl \
-    && apt-get -yqq autoremove
+    && apt-get -yqq autoremove \
     && apt-get -yqq clean
 
 WORKDIR /
