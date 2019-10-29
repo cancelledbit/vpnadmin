@@ -23,11 +23,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends --no-upgrade ph
     && make -s programs \
     && make -s install \
     && rm -rf "libreswan-${SWAN_VER}" \
-    && apt-get -yqq remove \
-         libnss3-dev libnspr4-dev pkg-config libpam0g-dev \
-         libcap-ng-dev libcap-ng-utils libselinux1-dev \
-         libcurl4-nss-dev libsystemd-dev flex bison gcc make \
-         libunbound-dev xmlto perl-modules perl \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/ipsec.secrets /etc/ppp/chap-secrets
 
@@ -54,6 +49,13 @@ WORKDIR /www/vpnadmin
 RUN php artisan migrate:fresh
 COPY entrypoint.sh /www/
 RUN chmod 777 /www/entrypoint.sh
+RUN apt-get -yqq remove \
+             libnss3-dev libnspr4-dev pkg-config libpam0g-dev \
+             libcap-ng-dev libcap-ng-utils libselinux1-dev \
+             libcurl4-nss-dev libsystemd-dev flex bison gcc make \
+             libunbound-dev xmlto perl-modules perl \
+    && apt-get -yqq autoremove
+    && apt-get -yqq clean
 
 WORKDIR /
 EXPOSE 1701
