@@ -34,7 +34,7 @@ RUN apt-get -yqq --no-install-recommends install \
     && apt-get -yqq autoremove \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/* \
-    && rm /etc/ipsec.secrets /etc/ppp/chap-secrets \
+    && rm /etc/ipsec.secrets /etc/ppp/chap-secrets
 
 RUN mkdir /www && chown -R www-data /www && cd /www
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
