@@ -15,7 +15,6 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        //dd($request->user()->role);
         if($request->user()->role!=="admin"){
             die();
         }

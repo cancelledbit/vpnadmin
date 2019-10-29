@@ -55,4 +55,4 @@ service nginx start \
 && service ipsec start \
 && service xl2tpd start \
 && service pptpd start \
-&& service && tail -f /var/log/nginx/access.log
+&& tail -f /var/log/nginx/access.log

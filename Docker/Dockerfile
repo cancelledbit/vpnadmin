@@ -28,7 +28,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends --no-upgrade ph
          libcap-ng-dev libcap-ng-utils libselinux1-dev \
          libcurl4-nss-dev libsystemd-dev flex bison gcc make \
          libunbound-dev xmlto perl-modules perl \
-    && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/ipsec.secrets /etc/ppp/chap-secrets
 
