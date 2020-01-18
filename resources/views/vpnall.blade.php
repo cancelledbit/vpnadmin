@@ -37,7 +37,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <a href="/edit"> Новый ВПН  </a>
             </div>
         </div>
     </div>

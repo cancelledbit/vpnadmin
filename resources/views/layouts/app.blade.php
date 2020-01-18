@@ -36,7 +36,7 @@
 
                         @if(Auth::user()!==null && Auth::user()->role === 'admin')
                             @foreach(config('menus') as $menu)
-                                <li><a href="{{$menu['href']}}">{{$menu['name']}}</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{$menu['href']}}">{{$menu['name']}}</a></li>
                             @endforeach
                          @endif
                     </ul>

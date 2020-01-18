@@ -10,4 +10,8 @@ return [
 			],
 		]
 	],
+	'main' => [
+		'href' => '/edit',
+		'name' => 'New VPN',
+	]
 ];
