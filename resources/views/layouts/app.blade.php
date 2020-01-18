@@ -34,6 +34,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                        @if(Auth::user()!==null && Auth::user()->role === 'admin')
+                            @foreach(config('menus') as $menu)
+                                <li><a href="{{$menu['href']}}">{{$menu['name']}}</a></li>
+                            @endforeach
+                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

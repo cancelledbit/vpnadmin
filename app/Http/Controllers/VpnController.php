@@ -31,21 +31,21 @@ class VpnController extends Controller
             return redirect()->action('VpnController@index');
         }
     }
-    public function edit(Request $r, $id = ""){
+    public function edit(Request $request, $id = ''){
         $freename = config('app.freename');
 
-        if ($r->method() == 'POST'){
-            if(!$r->fname){
+        if ($request->method() === 'POST'){
+            if(!$request->fname){
                 $fname = $freename;
             }
             else {
-                $fname = $r->fname;
+                $fname = $request->fname;
             }
             $vpns = VpnUser::all();
 
-            if($r->id){
-                $existent_users = $vpns->where('username','=',$r->login);
-                $existent_ips = $vpns->where('ip','=',$r->ip);
+            if($request->id){
+                $existent_users = $vpns->where('username','=',$request->login);
+                $existent_ips = $vpns->where('ip','=',$request->ip);
                 if($existent_users->count()>1){
                     $c = $existent_users->first();
                     return "Cant create vpn user, login already exists in $c";
@@ -55,18 +55,18 @@ class VpnController extends Controller
                     $c = $existent_users->first();
                     return "Cant create vpn user, ip already exists $c";
                 }
-                $vpn = VpnUser::find($r->id);
-                $vpn->username = $r->login;
-                $vpn->password = $r->pwd;
+                $vpn = VpnUser::find($request->id);
+                $vpn->username = $request->login;
+                $vpn->password = $request->pwd;
                 $vpn->fullname = $fname;
-                $vpn->ip = $r->ip;
-                $vpn->comment = $r->comment;
+                $vpn->ip = $request->ip;
+                $vpn->comment = $request->comment;
                 $vpn->server = "*";
                 $vpn->save();
             }
             else {
-                $existent_users = $vpns->where('username','=',$r->login);
-                $existent_ips = $vpns->where('ip','=',$r->ip);
+                $existent_users = $vpns->where('username','=',$request->login);
+                $existent_ips = $vpns->where('ip','=',$request->ip);
                 if($existent_users->count()){
                     $c = $existent_users->first();
                     return "Cant create vpn user, login already exists in $c";
@@ -77,11 +77,11 @@ class VpnController extends Controller
                     return "Cant create vpn user, ip already exists $c";
                 }
                 $vpn = new VpnUser();
-                $vpn->username = $r->login;
-                $vpn->password = $r->pwd;
+                $vpn->username = $request->login;
+                $vpn->password = $request->pwd;
                 $vpn->fullname = $fname;
-                $vpn->ip = $r->ip;
-                $vpn->comment = $r->comment;
+                $vpn->ip = $request->ip;
+                $vpn->comment = $request->comment;
                 $vpn->server = "*";
                 $vpn->save();
             }
